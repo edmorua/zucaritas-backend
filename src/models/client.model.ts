@@ -1,5 +1,6 @@
 import { Table, Column, DataType, Model } from 'sequelize-typescript';
 import { CONSTANTS } from '../utils/constants/constants';
+import { CLIENT_INTERFACE } from '../interfaces/client.interface';
 
 const minLenghtPassword = 8;
 const maxLenghtPassword = 99;
@@ -7,7 +8,7 @@ const maxLenghtPassword = 99;
 	timestamps: true,
 	tableName: 'client'
 })
-export default class Client extends Model {
+class Client extends Model<CLIENT_INTERFACE> {
   @Column({
   	type: DataType.STRING,
   	allowNull: false
@@ -68,3 +69,5 @@ export default class Client extends Model {
 	})
 		phone!: string;
 }
+
+export default Client;
