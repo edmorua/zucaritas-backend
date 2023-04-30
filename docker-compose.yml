@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  zucaritas-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./src:/home/node/app/src
+      - ./nodemon.json:/home/node/app/nodemon.json
+    container_name: zucaritas-backend
+    expose:
+      - '${PORT}'
+    ports:
+      - '${PORT}:${PORT}'
+    depends_on:
+      - db
+    command: npm run dev
+  db:
+    env_file:
+      - .env.development
+    container_name: zucaritas_db
+    image: postgres
+    ports:
+      - '${DB_PORT}:${DB_PORT}'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+volumes:
+  db_data:
