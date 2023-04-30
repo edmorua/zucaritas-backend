@@ -30,6 +30,6 @@ app.get('/', (req, res) => {
 	res.send('Hello World!');
 });
 
-app.use(`/${API_VERSION}/${MAIN_PATHS.CLIENT}`, clientRoute);
+app.use(`/api/${API_VERSION}${MAIN_PATHS.CLIENT}`, clientRoute);
 
 

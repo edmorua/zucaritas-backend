@@ -10,4 +10,4 @@ export const CODES_RESPONSE = {
 	GATEWAY_TIMEOUT: 504,
 };
 
-export const API_VERSION = 'V1';
+export const API_VERSION = 'v1';
